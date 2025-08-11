@@ -1,0 +1,31 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+.content-left {
+  flex: 75%;
+}
+
+.content-right {
+  flex: 25%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .content-left,
+  .content-right {
+    flex: 100%;
+  }
+}

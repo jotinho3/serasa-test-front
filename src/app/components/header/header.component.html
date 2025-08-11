@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="header-content">
+    <!-- Logo icon at the top -->
+     <div class="logo">
+      <img src="assets/logo.png" alt="Blog Logo" class="logo-image">
+    </div>
+    
+    <!-- Filter and Order buttons below the logo -->
+    <div class="controls">
+      <div class="filter-group">
+        <select id="author-filter" class="dropdown" (change)="onAuthorFilterChange($event)">
+          <option value="" disabled selected>Filter by author</option>
+          <option value="">All Authors</option>
+          <option *ngFor="let author of authors" [value]="author.authorId">
+            {{ author.name }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="order-group">
+        <select id="order-by" class="dropdown" (change)="onOrderByChange($event)">
+          <option value="" disabled selected>Order by</option>
+          <option value="date">Date</option>
+          <option value="category">Category</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</header>

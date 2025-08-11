@@ -1,0 +1,26 @@
+<div class="publications-container">
+  <div class="publication" *ngFor="let publication of publications">
+    <div class="publication-header">
+      <div class="author-info">
+        <h3>{{ getAuthor(publication.authorId)?.name }}</h3>
+        <span class="publication-date">{{ publication.date }}</span>
+      </div>
+      <div class="social-links" *ngIf="getAuthor(publication.authorId) as author">
+        <a [href]="author.xComUrl" target="_blank" rel="noopener noreferrer" class="social-link twitter">
+           <img src="assets/twitter-icon.png" alt="Blog Logo" class="logo-image">
+        </a>
+        <a [href]="author.linkedinUrl" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+            <img src="assets/linkedin-icon.png" alt="Blog Logo" class="logo-image">
+        </a>
+        <a [href]="author.websiteUrl" target="_blank" rel="noopener noreferrer" class="social-link website">
+            <img src="assets/link-icon.png" alt="Blog Logo" class="logo-image">
+        </a>
+      </div>
+    </div>
+    <div class="publication-content">
+      <h2 class="publication-title">{{ publication.title }}</h2>
+      <p class="publication-description">{{ publication.description }}</p>
+      <span class="publication-category">{{ publication.category }}</span>
+    </div>
+  </div>
+</div>

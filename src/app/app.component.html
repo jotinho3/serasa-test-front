@@ -1,0 +1,23 @@
+<div class="app-container">
+  <app-header 
+    (authorFilterChanged)="onAuthorFilterChanged($event)"
+    (orderByChanged)="onOrderByChanged($event)">
+  </app-header>
+  
+  <div class="main-content">
+    <div class="content-left">
+      <app-publication 
+        [publications]="filteredPublications"
+        [authors]="authors">
+      </app-publication>
+    </div>
+    
+    <div class="content-right">
+      <app-sidebar 
+        [publications]="publications">
+      </app-sidebar>
+    </div>
+  </div>
+  
+  <app-footer></app-footer>
+</div>
