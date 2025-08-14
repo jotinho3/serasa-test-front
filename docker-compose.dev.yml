@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  personal-blog-app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: personal-blog-app-dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

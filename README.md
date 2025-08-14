@@ -1,62 +1,287 @@
-# Personal Blog Application
+# 📝 Personal Blog App
 
-This is a simplified personal blog platform built using Angular and TypeScript. The application fetches authors, publications, and metadata from a RESTful API and displays the relevant information in a user-friendly interface.
+A modern, responsive blog application built with Angular 12, featuring publication management, author profiles, and social media integration.
 
-## Project Structure
+![Angular](https://img.shields.io/badge/Angular-12.0.0-red?style=flat-square&logo=angular)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.2.0-blue?style=flat-square&logo=typescript)
+![Node.js](https://img.shields.io/badge/Node.js-16.x-green?style=flat-square&logo=node.js)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=flat-square&logo=docker)
+![Jest](https://img.shields.io/badge/Tests-Jest-red?style=flat-square&logo=jest)
 
-The project is organized as follows:
+## 🌟 Features
+
+- **📱 Responsive Design** - Works seamlessly on desktop and mobile devices
+- **👥 Author Management** - Display author information with social media links
+- **📊 Publication Filtering** - Filter publications by author and category
+- **🔄 Real-time Sorting** - Sort by date and category
+- **📰 Latest News Sidebar** - Shows the 5 most recent publications
+- **🎨 Modern UI** - Clean and intuitive user interface
+- **🧪 Comprehensive Testing** - Full test coverage with Jest
+- **🐳 Docker Support** - Ready for containerized deployment
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 16.x or higher
+- npm 6.x or higher
+- Angular CLI 12.x
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/jotinho3/serasa-test-front.git
+   cd serasa-test-front
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm start
+   ```
+
+4. **Open in browser**
+   ```
+   http://localhost:4200
+   ```
+
+## 📋 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start development server |
+| `npm run build` | Build for production |
+| `npm test` | Run unit tests |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage report |
+| `npm run lint` | Lint the code |
+
+## 🐳 Docker Usage
+
+### Development Environment
+
+```bash
+# Build and run development container
+docker-compose -f docker-compose.dev.yml up --build
+
+# Run in background
+docker-compose -f docker-compose.dev.yml up -d
+
+# Stop containers
+docker-compose -f docker-compose.dev.yml down
+```
+
+### Production Environment
+
+```bash
+# Build and run production container
+docker-compose up --build
+
+# Run in background
+docker-compose up -d
+
+# Stop containers
+docker-compose down
+```
+
+### Docker Scripts
+
+```bash
+# Development
+npm run docker:build:dev    # Build dev image
+npm run docker:up:dev       # Start dev container
+npm run docker:down:dev     # Stop dev container
+
+# Production
+npm run docker:build        # Build prod image
+npm run docker:up           # Start prod container
+npm run docker:down         # Stop prod container
+```
+
+## 🏗️ Project Structure
 
 ```
-personal-blog-app
-├── src
-│   ├── app
-│   │   ├── components
-│   │   │   ├── header          # Contains the header component with logo and buttons
-│   │   │   ├── publication      # Contains the publication component for displaying individual posts
-│   │   │   ├── sidebar          # Contains the sidebar component for recent publications
-│   │   │   └── footer           # Contains the footer component with copyright information
-│   │   ├── services             # Contains the service for fetching data from the API
-│   │   ├── interfaces           # Contains TypeScript interfaces for strong typing
-│   │   ├── app.component.ts     # Main application component
-│   │   ├── app.component.html    # Main application template
-│   │   ├── app.component.scss    # Main application styles
-│   │   └── app.module.ts        # Root module of the application
-│   ├── assets
-│   │   └── styles
-│   │       └── global.scss      # Global styles for the application
-│   ├── index.html               # Main HTML file for the application
-│   └── main.ts                  # Main TypeScript file that bootstraps the application
-├── angular.json                 # Angular project configuration
-├── package.json                 # Project dependencies and scripts
-├── tsconfig.json                # TypeScript configuration
-└── README.md                    # Project documentation
+src/
+├── app/
+│   ├── components/
+│   │   ├── header/           # Navigation and filters
+│   │   ├── publication/      # Publication display
+│   │   ├── sidebar/          # Latest news sidebar
+│   │   └── footer/           # Footer component
+│   ├── interfaces/
+│   │   ├── author.interface.ts
+│   │   └── publication.interface.ts
+│   ├── services/
+│   │   └── blog.service.ts   # API service
+│   └── app.component.*       # Root component
+├── assets/                   # Static assets
+├── environments/             # Environment configs
+└── styles.scss              # Global styles
 ```
 
-## Features
+## 🔧 API Integration
 
-- **Header**: Displays the logo and buttons for filtering publications by author and ordering by date or category.
-- **Main Content Area**: Shows the details of individual publications, including the author's name, publication date, title, and description.
-- **Sidebar**: Lists the most recent publications with their titles and publication dates.
-- **Footer**: Contains copyright information and additional links.
+The application consumes a REST API with the following endpoints:
 
-## API Endpoints
+### Publications Endpoint
+```typescript
+GET /publications
+Response: Publication[]
 
-- **Publications**: Fetches a list of publications from the API.
-  - Endpoint: `http://localhost:3000/api/publications`
-  
-- **Authors**: Fetches a list of authors from the API.
-  - Endpoint: `http://localhost:3000/api/authors`
+interface Publication {
+  authorId: number;
+  date: string;        // Format: DD/MM/YYYY
+  title: string;
+  category: string;
+  description: string;
+}
+```
 
-## Getting Started
+### Authors Endpoint
+```typescript
+GET /authors
+Response: Author[]
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Run the application using Angular CLI:
+interface Author {
+  authorId: number;
+  name: string;
+  xComUrl: string;
+  linkedinUrl: string;
+  websiteUrl: string;
+}
+```
+
+## 🧪 Testing
+
+The project includes comprehensive unit tests using Jest and Angular Testing Utilities.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+### Test Coverage
+
+- ✅ **Components**: All components are fully tested
+- ✅ **Services**: API service with mocked HTTP calls
+- ✅ **Interfaces**: Type safety validation
+- ✅ **Integration**: End-to-end user workflows
+
+## 🎨 UI Components
+
+### Header Component
+- Logo and navigation
+- Author filter dropdown
+- Sort by date/category options
+
+### Publication Component
+- Publication cards with author info
+- Social media links integration
+- Responsive grid layout
+
+### Sidebar Component
+- Latest 5 publications
+- Date sorting functionality
+- Compact card design
+
+### Footer Component
+- Company information
+- Copyright notice
+- Responsive layout
+
+## 🌐 Deployment
+
+### Vercel (Recommended)
+
+1. **Connect your GitHub repository to Vercel**
+2. **Configure build settings:**
+   ```json
+   {
+     "buildCommand": "npm run build",
+     "outputDirectory": "dist/personal-blog-app",
+     "installCommand": "npm install"
+   }
    ```
-   ng serve
+3. **Set environment variables:**
    ```
-4. Open your browser and go to `http://localhost:4200` to view the application.
+   NODE_OPTIONS=--openssl-legacy-provider
+   ```
 
-## License
+### Other Platforms
 
-This project is licensed under the MIT License.
+- **Netlify**: Drag and drop `dist/` folder
+- **GitHub Pages**: Use `ng deploy`
+- **Firebase**: Use Firebase CLI
+- **Docker**: Use provided Docker configuration
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create `.env` file for local development:
+
+```bash
+NODE_OPTIONS=--openssl-legacy-provider
+API_BASE_URL=http://localhost:3000
+```
+
+### Angular Configuration
+
+Key configuration files:
+- `angular.json` - Angular CLI configuration
+- `tsconfig.json` - TypeScript configuration
+- `jest.config.js` - Jest testing configuration
+
+## 🤝 Contributing
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Commit your changes**
+   ```bash
+   git commit -m 'Add some amazing feature'
+   ```
+4. **Push to the branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+5. **Open a Pull Request**
+
+### Development Guidelines
+
+- Follow Angular style guide
+- Write unit tests for new features
+- Use conventional commit messages
+- Ensure Docker compatibility
+- Update documentation
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Angular Team** - For the amazing framework
+- **Vercel** - For easy deployment platform
+- **Jest** - For testing utilities
+- **Docker** - For containerization support
+
+<div align="center">
+  <p>Made with ❤️ for Serasa Technical Test</p>
+ 
+</div>

@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && ng build",
+    "start": "ng serve",
+    "start:docker": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0",
+    "build": "ng build --configuration production",
+    "build:docker": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng build --configuration production",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "docker:build": "docker-compose build",
+    "docker:build:dev": "docker-compose -f docker-compose.dev.yml build",
+    "docker:up": "docker-compose up",
+    "docker:up:dev": "docker-compose -f docker-compose.dev.yml up",
+    "docker:down": "docker-compose down",
+    "docker:down:dev": "docker-compose -f docker-compose.dev.yml down"
   },
   "private": true,
   "dependencies": {

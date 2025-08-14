@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  personal-blog-app-dev:
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
