@@ -15,9 +15,6 @@
     "docker:down": "docker-compose down",
     "docker:down:dev": "docker-compose -f docker-compose.dev.yml down"
   },
-  "engines": {
-    "node": "18.x"
-  },
   "private": true,
   "dependencies": {
     "@angular/common": "^17.3.12",
