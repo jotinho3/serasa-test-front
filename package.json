@@ -16,7 +16,7 @@
     "docker:down:dev": "docker-compose -f docker-compose.dev.yml down"
   },
   "engines": {
-  "node": "16.x"
+  "node": "18.x"
 },
   "private": true,
   "dependencies": {
