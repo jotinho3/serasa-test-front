@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "personal-blog-app:build:production"
+              "buildTarget": "personal-blog-app:build:production"
             },
             "development": {
-              "browserTarget": "personal-blog-app:build"
+              "buildTarget": "personal-blog-app:build"
             }
           },
           "defaultConfiguration": "development"
